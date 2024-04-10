@@ -1,6 +1,6 @@
 <img src='./public/doc/cover.png' title='HelixColor' alt='Logo HelixColor' />
 <div align="center">
-  <h3>A library color for dev</h3>
+  <h3>A color library for dev</h3>
   	<span>
 		<span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
 		<a href="#get-started">Get started</a>
