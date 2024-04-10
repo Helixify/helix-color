@@ -88,7 +88,7 @@
   color: var(--font-tertiary);
 }
 
-.hover\:font-primary {
+.hover\:font-primary:hover {
   color: var(--font-primary);
 }
 .hover\:font-secondary:hover {

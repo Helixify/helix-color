@@ -50,12 +50,12 @@ Using the default main file, you will have access to classes for both light and 
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/Helixify/HelixColor@v0.1-beta/dist/compressed/main.css"
+  href="https://cdn.jsdelivr.net/gh/Helixify/HelixColor@latest/dist/compressed/main.css"
 />
 ```
 
 ```css
-@import url("https://cdn.jsdelivr.net/gh/Helixify/HelixColor@v0.1-beta/dist/compressed/main.css");
+@import url("https://cdn.jsdelivr.net/gh/Helixify/HelixColor@latest/dist/compressed/main.css");
 ```
 
 **Applying in HTML**
@@ -75,12 +75,12 @@ By using the color scheme, you can automatically apply colors based on the user'
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/Helixify/HelixColor@v0.1-beta/dist/compressed/color-scheme.css"
+  href="https://cdn.jsdelivr.net/gh/Helixify/HelixColor@latest/dist/compressed/color-scheme.css"
 />
 ```
 
 ```css
-@import url("https://cdn.jsdelivr.net/gh/Helixify/HelixColor@v0.1-beta/dist/compressed/color-scheme.css");
+@import url("https://cdn.jsdelivr.net/gh/Helixify/HelixColor@latest/dist/compressed/color-scheme.css");
 ```
 
 **Applying in HTML**
