@@ -19,7 +19,6 @@
   --hsl-red: 5, 80%;
   --hsl-orange: 20, 90%;
   --hsl-yellow: 45, 100%;
-  --hsl-yellow: 45, 100%;
   --hsl-green: 135, 60%;
   --hsl-blue: 220, 90%;
   --hsl-purple: 275, 100%;
@@ -72,6 +71,13 @@
   background-color: var(--bg-secondary);
 }
 
+.hover\:theme-primary {
+  background-color: var(--bg-primary);
+}
+.hover\:theme-secondary {
+  background-color: var(--bg-secondary);
+}
+
 .font-primary {
   color: var(--font-primary);
 }
@@ -79,6 +85,16 @@
   color: var(--font-secondary);
 }
 .font-tertiary {
+  color: var(--font-tertiary);
+}
+
+.hover\:font-primary {
+  color: var(--font-primary);
+}
+.hover\:font-secondary {
+  color: var(--font-secondary);
+}
+.hover\:font-tertiary {
   color: var(--font-tertiary);
 }
 
@@ -173,6 +189,97 @@
   background-color: var(--purple-light);
 }
 
+.hover\:bgc-red-dark {
+  background-color: var(--red-dark);
+}
+.hover\:bgc-red-darken {
+  background-color: var(--red-darken);
+}
+.hover\:bgc-red-normal {
+  background-color: var(--red-normal);
+}
+.hover\:bgc-red-lighten {
+  background-color: var(--red-lighten);
+}
+.hover\:bgc-red-light {
+  background-color: var(--red-light);
+}
+.hover\:bgc-orange-dark {
+  background-color: var(--orange-dark);
+}
+.hover\:bgc-orange-darken {
+  background-color: var(--orange-darken);
+}
+.hover\:bgc-orange-normal {
+  background-color: var(--orange-normal);
+}
+.hover\:bgc-orange-lighten {
+  background-color: var(--orange-lighten);
+}
+.hover\:bgc-orange-light {
+  background-color: var(--orange-light);
+}
+.hover\:bgc-yellow-dark {
+  background-color: var(--yellow-dark);
+}
+.hover\:bgc-yellow-darken {
+  background-color: var(--yellow-darken);
+}
+.hover\:bgc-yellow-normal {
+  background-color: var(--yellow-normal);
+}
+.hover\:bgc-yellow-lighten {
+  background-color: var(--yellow-lighten);
+}
+.hover\:bgc-yellow-light {
+  background-color: var(--yellow-light);
+}
+.hover\:bgc-green-dark {
+  background-color: var(--green-dark);
+}
+.hover\:bgc-green-darken {
+  background-color: var(--green-darken);
+}
+.hover\:bgc-green-normal {
+  background-color: var(--green-normal);
+}
+.hover\:bgc-green-lighten {
+  background-color: var(--green-lighten);
+}
+.hover\:bgc-green-light {
+  background-color: var(--green-light);
+}
+.hover\:bgc-blue-dark {
+  background-color: var(--blue-dark);
+}
+.hover\:bgc-blue-darken {
+  background-color: var(--blue-darken);
+}
+.hover\:bgc-blue-normal {
+  background-color: var(--blue-normal);
+}
+.hover\:bgc-blue-lighten {
+  background-color: var(--blue-lighten);
+}
+.hover\:bgc-blue-light {
+  background-color: var(--blue-light);
+}
+.hover\:bgc-purple-dark {
+  background-color: var(--purple-dark);
+}
+.hover\:bgc-purple-darken {
+  background-color: var(--purple-darken);
+}
+.hover\:bgc-purple-normal {
+  background-color: var(--purple-normal);
+}
+.hover\:bgc-purple-lighten {
+  background-color: var(--purple-lighten);
+}
+.hover\:bgc-purple-light {
+  background-color: var(--purple-light);
+}
+
 .color-red-dark {
   color: var(--red-dark);
 }
@@ -261,5 +368,96 @@
   color: var(--purple-lighten);
 }
 .color-purple-light {
+  color: var(--purple-light);
+}
+
+.hover\:color-red-dark {
+  color: var(--red-dark);
+}
+.hover\:color-red-darken {
+  color: var(--red-darken);
+}
+.hover\:color-red-normal {
+  color: var(--red-normal);
+}
+.hover\:color-red-lighten {
+  color: var(--red-lighten);
+}
+.hover\:color-red-light {
+  color: var(--red-light);
+}
+.hover\:color-orange-dark {
+  color: var(--orange-dark);
+}
+.hover\:color-orange-darken {
+  color: var(--orange-darken);
+}
+.hover\:color-orange-normal {
+  color: var(--orange-normal);
+}
+.hover\:color-orange-lighten {
+  color: var(--orange-lighten);
+}
+.hover\:color-orange-light {
+  color: var(--orange-light);
+}
+.hover\:color-yellow-dark {
+  color: var(--yellow-dark);
+}
+.hover\:color-yellow-darken {
+  color: var(--yellow-darken);
+}
+.hover\:color-yellow-normal {
+  color: var(--yellow-normal);
+}
+.hover\:color-yellow-lighten {
+  color: var(--yellow-lighten);
+}
+.hover\:color-yellow-light {
+  color: var(--yellow-light);
+}
+.hover\:color-green-dark {
+  color: var(--green-dark);
+}
+.hover\:color-green-darken {
+  color: var(--green-darken);
+}
+.hover\:color-green-normal {
+  color: var(--green-normal);
+}
+.hover\:color-green-lighten {
+  color: var(--green-lighten);
+}
+.hover\:color-green-light {
+  color: var(--green-light);
+}
+.hover\:color-blue-dark {
+  color: var(--blue-dark);
+}
+.hover\:color-blue-darken {
+  color: var(--blue-darken);
+}
+.hover\:color-blue-normal {
+  color: var(--blue-normal);
+}
+.hover\:color-blue-lighten {
+  color: var(--blue-lighten);
+}
+.hover\:color-blue-light {
+  color: var(--blue-light);
+}
+.hover\:color-purple-dark {
+  color: var(--purple-dark);
+}
+.hover\:color-purple-darken {
+  color: var(--purple-darken);
+}
+.hover\:color-purple-normal {
+  color: var(--purple-normal);
+}
+.hover\:color-purple-lighten {
+  color: var(--purple-lighten);
+}
+.hover\:color-purple-light {
   color: var(--purple-light);
 }

@@ -1,4 +1,15 @@
-# HelixColor
+<img src='./public/doc/cover.png' title='HelixColor' alt='Logo HelixColor' />
+<div align="center">
+  <h3>A library color for dev</h3>
+  	<span>
+		<span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+		<a href="#get-started">Get started</a>
+		<span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+	</span>
+</div>
+
+<br/>
+<br/>
 
 HelixColor is a CSS library that provides a color palette based on the color wheel, making it easy to create visually appealing and harmonious interfaces. The library includes variables and classes that apply colors through CSS `background-color` and `color`.
 
@@ -14,7 +25,7 @@ Moreover, HelixColor supports the `prefers-color-scheme` media query, allowing c
 
 </br>
 
-## Getting Started
+## Get started
 
 You can utilize the full range of colors based on the color wheel by importing the desired file and applying it to your code as follows:
 
