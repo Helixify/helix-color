@@ -2,98 +2,115 @@
 <div align="center">
   <h3>A color library for dev</h3>
   	<span>
+		<a href="#installation">Get started</a>
 		<span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
-		<a href="#get-started">Get started</a>
+		<a href="#static-olors">Static Colors</a>
 		<span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+		<a href="#dynamic-colors-with-prefers-color-scheme">Dynamic Colors</a>
 	</span>
 </div>
 
 <br/>
 <br/>
 
-HelixColor is a CSS library that provides a color palette based on the color wheel, making it easy to create visually appealing and harmonious interfaces. The library includes variables and classes that apply colors through CSS `background-color` and `color`.
+HelixColor is a CSS library that provides a color palette
+based on the color wheel, making it easy to create visually
+appealing and harmonious interfaces. The library includes
+variables and classes that apply colors through CSS
+`background-color` and `color`.
 
-Moreover, HelixColor supports the `prefers-color-scheme` media query, allowing colors to be automatically inverted based on the user's theme preference between light and dark themes.
+Moreover, HelixColor supports the `prefers-color-scheme`
+media query, allowing colors to be automatically inverted
+based on the user's theme preference between light and dark
+themes.
 
 </br>
 
 ## Features:
 
 - Color palette based on the color wheel.
-- Variables and classes for applying colors via `background-color` and `color`.
-- Support for `prefers-color-scheme` media query for automatic switching between light and dark themes.
+- Variables and classes for applying colors via
+  `background-color` and `color`.
+- Support for `prefers-color-scheme` media query for
+  automatic switching between light and dark themes.
 
 </br>
 
-## Get started
+## Installation
 
-You can utilize the full range of colors based on the color wheel by importing the desired file and applying it to your code as follows:
+You can also install the HelixColor library via NPM:
 
-```html
-<main class="theme-primary">
-  <div class="bgc-blue-light">
-    <h1 class="color-blue-darken">Welcome to Helix Color</h1>
-  </div>
-  <h2 class="font-tertiary">Feel free to explore all the colors</h2>
-</main>
+```bash
+npm i helix-color
 ```
-
-_Example using the color-scheme_
 
 </br>
-</br>
 
-### Default
+## Static Colors
 
-Using the default main file, you will have access to classes for both light and dark themes. However, you won't have the `prefers-color-scheme` media query.
+Static colors are independent of the user's theme settings.
+That is, the background and text colors will not change
+unless directly defined in the code. This style is ideal for
+interfaces that require visual consistency regardless of
+user preferences.
 
-```html
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/Helixify/HelixColor@latest/dist/compressed/main.css"
-/>
+### How to use:
+
+Include the following CDN link in your project to use static
+colors:
+
+```bash
+https://cdn.jsdelivr.net/gh/Helixify/HelixColor@latest/dist/compressed/main.css
 ```
 
-```css
-@import url("https://cdn.jsdelivr.net/gh/Helixify/HelixColor@latest/dist/compressed/main.css");
-```
-
-**Applying in HTML**
+### Usage example:
 
 ```html
 <main class="theme-light-primary">
-  <h1 class="font-light-primary">Welcome to Helix Color</h1>
+	<h1 class="font-light-primary">Welcome to Helix Color</h1>
 </main>
 ```
 
 </br>
 
-### Color Scheme
+## Dynamic Colors with prefers-color-scheme
 
-By using the color scheme, you can automatically apply colors based on the user's theme, but you won't be able to access classes from another theme as in the previous example.
+Dynamic colors automatically adjust based on the user's
+theme settings. If the user sets their system to a dark or
+light theme, the background and text colors will adjust to
+follow that preference.
 
-```html
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/Helixify/HelixColor@latest/dist/compressed/color-scheme.css"
-/>
+### How to use:
+
+Include the following CDN link in your project to use
+dynamic colors:
+
+```bash
+https://cdn.jsdelivr.net/gh/Helixify/HelixColor@latest/dist/compressed/color-scheme.css
 ```
 
-```css
-@import url("https://cdn.jsdelivr.net/gh/Helixify/HelixColor@latest/dist/compressed/color-scheme.css");
-```
-
-**Applying in HTML**
+### Usage example:
 
 ```html
 <main class="theme-primary">
-  <h1 class="font-primary">Welcome to Helix Color</h1>
+	<h1 class="font-primary">Welcome to Helix Color</h1>
 </main>
 ```
+
+</br>
+
+## Conclusion
+
+HelixColor is a powerful tool for developers who want to
+create attractive and adaptable interfaces. Whether using
+static colors for consistency or dynamic colors to adjust to
+user preferences, HelixColor provides the necessary
+flexibility for modern, responsive design.
 
 </br>
 </br>
 
 ### License
 
-HelixColor is released under the [MIT License](/license.md). You are free to use and modify it for your projects.
+HelixColor is released under the [MIT License](/license.md).
+You are free to use and modify it for your projects.
