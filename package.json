@@ -1,0 +1,27 @@
+{
+	"name": "helix-color",
+	"private": true,
+	"type": "module",
+	"main": "README.md",
+	"version": "0.5-beta",
+	"description": "A color library for dev",
+	"author": "André Luiz",
+	"homepage": "https://www.helixify.dev/helixcolor",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Helixify/HelixColor.git"
+	},
+	"license": "MIT",
+	"scripts": {
+		"dev": "vite",
+		"build": "gulp",
+		"preview": "vite preview"
+	},
+	"devDependencies": {
+		"gulp": "^5.0.0",
+		"gulp-sass": "^5.1.0",
+		"postcss-preset-env": "^8.4.2",
+		"sass": "^1.63.3",
+		"vite": "^4.3.9"
+	}
+}

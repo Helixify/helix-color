@@ -1,0 +1,42 @@
+$color-names: 'dark', 'darken', 'normal', 'lighten', 'light';
+$min-color-names: 'dark', 'darken', 'normal', 'lighten',
+	'light';
+
+@mixin set-colors($name) {
+	--#{$name}-dark: hsla(var(--hsl-#{$name}), 30%, 1);
+	--#{$name}-darken: hsla(var(--hsl-#{$name}), 40%, 1);
+	--#{$name}-normal: hsla(var(--hsl-#{$name}), 60%, 1);
+	--#{$name}-lighten: hsla(var(--hsl-#{$name}), 80%, 1);
+	--#{$name}-light: hsla(var(--hsl-#{$name}), 90%, 1);
+}
+
+@mixin property($name, $property, $hovered: false) {
+	@each $color-name in $color-names {
+		@if ($hovered) {
+			&-#{$name}-#{$color-name}:hover {
+				#{$property}: var(--#{$name}-#{$color-name});
+			}
+		} @else {
+			&-#{$name}-#{$color-name} {
+				#{$property}: var(--#{$name}-#{$color-name});
+			}
+		}
+	}
+}
+
+@mixin property-min(
+	$name,
+	$variable,
+	$property,
+	$hovered: false
+) {
+	@if ($hovered) {
+		&-#{$name}:hover {
+			#{$property}: var(--#{$variable});
+		}
+	} @else {
+		&-#{$name} {
+			#{$property}: var(--#{$variable});
+		}
+	}
+}

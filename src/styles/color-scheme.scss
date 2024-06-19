@@ -1,0 +1,43 @@
+@import 'mixin';
+@import 'variables';
+@import 'theme/variables';
+@import 'font/variables';
+
+:root {
+	// Background - Font
+	--hsl-base: 0, 0%;
+
+	// Background
+	@include theme-variables;
+	--bg-primary: var(--bg-light-primary);
+	--bg-secondary: var(--bg-light-secondary);
+
+	// Font
+	@include font-variables;
+	--font-primary: var(--font-light-primary);
+	--font-primary: var(--font-light-primary);
+	--font-secondary: var(--font-light-secondary);
+	--font-tertiary: var(--font-light-tertiary);
+
+	// Colors
+	@include colors;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		// Background
+		--bg-primary: var(--bg-dark-primary);
+		--bg-secondary: var(--bg-dark-secondary);
+
+		// Font
+		--font-primary: var(--font-dark-primary);
+		--font-primary: var(--font-dark-primary);
+		--font-secondary: var(--font-dark-secondary);
+		--font-tertiary: var(--font-dark-tertiary);
+	}
+}
+
+@import 'theme/scheme';
+@import 'font/scheme';
+@import 'background/main';
+@import 'color/main';

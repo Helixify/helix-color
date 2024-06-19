@@ -1,0 +1,18 @@
+@mixin color-generator($hovered: false) {
+	@include property('red', color, $hovered);
+	@include property('orange', color, $hovered);
+	@include property('yellow', color, $hovered);
+	@include property('green', color, $hovered);
+	@include property('blue', color, $hovered);
+	@include property('purple', color, $hovered);
+}
+
+.color {
+	@include color-generator;
+}
+
+.hover {
+	&\:color {
+		@include color-generator(true);
+	}
+}

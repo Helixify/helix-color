@@ -1,0 +1,9 @@
+@mixin theme-variables {
+	// light theme
+	--bg-light-primary: hsla(var(--hsl-base), 100%, 1);
+	--bg-light-secondary: hsla(var(--hsl-base), 95%, 1);
+
+	// dark theme
+	--bg-dark-primary: hsla(var(--hsl-base), 15%, 1);
+	--bg-dark-secondary: hsla(var(--hsl-base), 20%, 1);
+}

@@ -1,0 +1,21 @@
+@mixin colors {
+	// Colors
+	// Red
+	--hsl-red: 5, 80%;
+	// Orange
+	--hsl-orange: 20, 90%;
+	// Yellow
+	--hsl-yellow: 45, 100%;
+	// Green
+	--hsl-green: 135, 60%;
+	// Blue
+	--hsl-blue: 220, 90%;
+	// Purple
+	--hsl-purple: 275, 100%;
+	@include set-colors('red');
+	@include set-colors('orange');
+	@include set-colors('yellow');
+	@include set-colors('green');
+	@include set-colors('blue');
+	@include set-colors('purple');
+}

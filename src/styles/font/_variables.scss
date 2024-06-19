@@ -1,0 +1,12 @@
+@mixin font-variables {
+	// Font Color
+	// light theme
+	--font-light-primary: hsla(var(--hsl-base), 5%, 1);
+	--font-light-secondary: hsla(var(--hsl-base), 20%, 1);
+	--font-light-tertiary: hsla(var(--hsl-base), 40%, 1);
+
+	// dark theme
+	--font-dark-primary: hsla(var(--hsl-base), 100%, 1);
+	--font-dark-secondary: hsla(var(--hsl-base), 95%, 1);
+	--font-dark-tertiary: hsla(var(--hsl-base), 90%, 1);
+}

@@ -1,0 +1,30 @@
+@mixin font-generator($hovered: false) {
+	@include property-min(
+		'primary',
+		'font-primary',
+		color,
+		$hovered
+	);
+	@include property-min(
+		'secondary',
+		'font-secondary',
+		color,
+		$hovered
+	);
+	@include property-min(
+		'tertiary',
+		'font-tertiary',
+		color,
+		$hovered
+	);
+}
+
+.font {
+	@include font-generator;
+}
+
+.hover {
+	&\:font {
+		@include font-generator(true);
+	}
+}
