@@ -1,9 +1,9 @@
 {
 	"name": "helix-color",
-	"private": true,
+	"private": false,
 	"type": "module",
 	"main": "README.md",
-	"version": "0.5-beta",
+	"version": "0.5.0",
 	"description": "A color library for dev",
 	"author": "André Luiz",
 	"homepage": "https://www.helixify.dev/helixcolor",
