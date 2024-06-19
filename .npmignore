@@ -1,0 +1,12 @@
+node_modules
+dist/expanded/*
+public/*
+src/*
+.prettierignore
+.prettierrc
+gulpfile.js
+index.html
+index.scss
+postcss.config.js
+!dist/compressed/main.css
+!dist/compressed/color-scheme.css

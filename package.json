@@ -11,6 +11,10 @@
 		"type": "git",
 		"url": "git+https://github.com/Helixify/HelixColor.git"
 	},
+	"files": [
+		"dist/compressed/main.css",
+		"dist/compressed/color-scheme.css"
+	],
 	"license": "MIT",
 	"scripts": {
 		"dev": "vite",
