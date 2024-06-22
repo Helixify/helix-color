@@ -10,17 +10,207 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0" />
 		<title>Helix Color</title>
+
 		<link
 			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/gh/Helixify/HelixCSS/dist/compressed/main.css" />
-		<link
-			rel="stylesheet"
-			href="/src/styles/color-scheme.scss" />
+			href="https://cdn.jsdelivr.net/gh/Helixify/HelixCSS@latest/dist/compressed/main.css" />
+		<link rel="stylesheet" href="/src/styles/main.scss" />
 		<link rel="stylesheet" href="index.scss" />
 	</head>
 
-	<body class="theme-primary">
-		<main>
+	<body>
+		<main class="bg-primary p-block-16">
+			<div class="container-lg ds-flex flow-col-nw gap-xl">
+				<section class="bg-secondary p-block-10 radius-lg">
+					<div class="container-md">
+						<div class="row">
+							<div class="col ds-flex flow-col-nw gap-sm">
+								<h1>Helix color</h1>
+								<p class="color-tertiary">
+									A simple way to create color themes for
+									your website.
+								</p>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="bg-secondary p-block-10 radius-lg">
+					<div
+						class="container-md ds-flex flow-col-nw gap-md">
+						<div class="row">
+							<div class="col ds-flex flow-col-nw gap-sm">
+								<h2>Background</h2>
+							</div>
+						</div>
+						<div class="group-box bg-dark-primary">
+							<div class="box bg-light-primary"></div>
+							<div class="box bg-light-secondary"></div>
+							<div class="box bg-light-tertiary"></div>
+						</div>
+						<div class="group-box bg-light-primary">
+							<div class="box bg-dark-primary"></div>
+							<div class="box bg-dark-secondary"></div>
+							<div class="box bg-dark-tertiary"></div>
+						</div>
+					</div>
+				</section>
+
+				<section class="bg-secondary p-block-10 radius-lg">
+					<div
+						class="container-md ds-flex flow-col-nw gap-md">
+						<div class="row">
+							<div class="col ds-flex flow-col-nw gap-sm">
+								<h2>Text</h2>
+							</div>
+						</div>
+						<div class="group-box bg-light-primary">
+							<div class="box color-light-primary">
+								<span>Primary</span>
+							</div>
+							<div class="box color-light-secondary">
+								<span>Secondary</span>
+							</div>
+							<div class="box color-light-tertiary">
+								<span>Tertiary</span>
+							</div>
+						</div>
+						<div class="group-box bg-dark-primary">
+							<div class="box color-dark-primary">
+								<span>Primary</span>
+							</div>
+							<div class="box color-dark-secondary">
+								<span>Secondary</span>
+							</div>
+							<div class="box color-dark-tertiary">
+								<span>Tertiary</span>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="bg-secondary p-block-10 radius-lg">
+					<div
+						class="container-md ds-flex flow-col-nw gap-md">
+						<div class="row">
+							<div class="col ds-flex flow-col-nw gap-sm">
+								<h2>Colors</h2>
+							</div>
+						</div>
+						<div class="group-box">
+							<div class="box bg-red-light"></div>
+							<div class="box bg-red-lighten"></div>
+							<div class="box bg-red-regular"></div>
+							<div class="box bg-red-darken"></div>
+							<div class="box bg-red-dark"></div>
+						</div>
+						<div class="group-box">
+							<div class="box bg-orange-light"></div>
+							<div class="box bg-orange-lighten"></div>
+							<div class="box bg-orange-regular"></div>
+							<div class="box bg-orange-darken"></div>
+							<div class="box bg-orange-dark"></div>
+						</div>
+						<div class="group-box">
+							<div class="box bg-yellow-light"></div>
+							<div class="box bg-yellow-lighten"></div>
+							<div class="box bg-yellow-regular"></div>
+							<div class="box bg-yellow-darken"></div>
+							<div class="box bg-yellow-dark"></div>
+						</div>
+						<div class="group-box">
+							<div class="box bg-green-light"></div>
+							<div class="box bg-green-lighten"></div>
+							<div class="box bg-green-regular"></div>
+							<div class="box bg-green-darken"></div>
+							<div class="box bg-green-dark"></div>
+						</div>
+						<div class="group-box">
+							<div class="box bg-blue-light"></div>
+							<div class="box bg-blue-lighten"></div>
+							<div class="box bg-blue-regular"></div>
+							<div class="box bg-blue-darken"></div>
+							<div class="box bg-blue-dark"></div>
+						</div>
+						<div class="group-box">
+							<div class="box bg-purple-light"></div>
+							<div class="box bg-purple-lighten"></div>
+							<div class="box bg-purple-regular"></div>
+							<div class="box bg-purple-darken"></div>
+							<div class="box bg-purple-dark"></div>
+						</div>
+					</div>
+				</section>
+
+				<section class="bg-secondary p-block-10 radius-lg">
+					<div
+						class="container-md ds-flex flow-col-nw gap-md">
+						<div class="row">
+							<div class="col ds-flex flow-col-nw gap-sm">
+								<h2>Hover</h2>
+							</div>
+						</div>
+						<div class="group-box bg-tertiary">
+							<div class="box hover:bg-red-light"></div>
+							<div
+								class="box hover:bg-orange-lighten"></div>
+							<div
+								class="box hover:bg-yellow-regular"></div>
+							<div class="box hover:bg-green-darken"></div>
+							<div class="box hover:bg-blue-dark"></div>
+						</div>
+						<div
+							class="group-box bg-tertiary color-tertiary">
+							<div
+								class="box cursor-pointer hover:color-red-regular">
+								<span>Red</span>
+							</div>
+							<div
+								class="box cursor-pointer hover:color-yellow-regular">
+								<span>Yellow</span>
+							</div>
+							<div
+								class="box cursor-pointer hover:color-blue-regular">
+								<span>Blue</span>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="bg-secondary p-block-10 radius-lg">
+					<div
+						class="container-md ds-flex flow-col-nw gap-md">
+						<div class="row">
+							<div class="col ds-flex flow-col-nw gap-sm">
+								<h2>Dinamyc color</h2>
+							</div>
+						</div>
+						<div class="group-box bg-tertiary">
+							<div
+								class="box dark:bg-red-darken light:bg-red-light"></div>
+							<div
+								class="box dark:bg-red-dark light:bg-red-lighten"></div>
+						</div>
+						<div
+							class="group-box bg-tertiary color-tertiary">
+							<div
+								class="box light:color-orange-darken dark:color-orange-lighten">
+								<span>Orange</span>
+							</div>
+							<div
+								class="box light:color-green-darken dark:color-green-lighten">
+								<span>Green</span>
+							</div>
+							<div
+								class="box light:color-purple-darken dark:color-purple-lighten">
+								<span>Purple</span>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</main>
+		<!-- <main class="bg-primary">
 			<div class="container-md">
 				<section
 					class="p-block-6 theme-secondary hover:theme-primary">
@@ -699,6 +889,6 @@
 					</div>
 				</section>
 			</div>
-		</main>
+		</main> -->
 	</body>
 </html>

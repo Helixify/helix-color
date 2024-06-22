@@ -1,18 +1,167 @@
 @import 'mixin';
 @import 'variables';
-@import 'theme/variables';
-@import 'font/variables';
 
 :root {
 	// Background - Font
 	--hsl-base: 0, 0%;
 
-	@include theme-variables;
-	@include font-variables;
-	@include colors;
+	@include var-bg-main;
+	@include var-color-main;
+	@include var-color;
 }
 
-@import 'theme/main';
-@import 'font/main';
-@import 'background/main';
-@import 'color/main';
+.bg {
+	@include generate-bg-text-class-dynamic(
+		'bg',
+		background-color,
+		false
+	);
+	@include mount-bg-text-class-static(
+		'bg',
+		background-color,
+		false
+	);
+	@include mount-color-class(background-color, false);
+}
+
+.color {
+	@include generate-bg-text-class-dynamic(
+		'color',
+		color,
+		false
+	);
+	@include mount-bg-text-class-static(
+		'color',
+		color,
+		false
+	);
+	@include mount-color-class(color, false);
+}
+
+.hover {
+	&\:bg {
+		@include generate-bg-text-class-dynamic(
+			'bg',
+			background-color,
+			true
+		);
+		@include mount-bg-text-class-static(
+			'bg' background-color,
+			true
+		);
+		@include mount-color-class(background-color, true);
+	}
+
+	&\:color {
+		@include generate-bg-text-class-dynamic(
+			'color',
+			color,
+			true
+		);
+		@include mount-bg-text-class-static(
+			'color',
+			color,
+			true
+		);
+		@include mount-color-class(color, true);
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--bg-1: var(--bg-light-1);
+		--bg-2: var(--bg-light-2);
+		--bg-3: var(--bg-light-3);
+
+		--color-1: var(--color-light-1);
+		--color-2: var(--color-light-2);
+		--color-3: var(--color-light-3);
+	}
+
+	.light {
+		&\:bg {
+			@include mount-bg-text-class-static(
+				'bg',
+				background-color,
+				false
+			);
+			@include mount-color-class(background-color, false);
+		}
+
+		&\:color {
+			@include mount-bg-text-class-static(
+				'color',
+				color,
+				false
+			);
+			@include mount-color-class(color, false);
+		}
+
+		&\:hover {
+			&\:bg {
+				@include mount-bg-text-class-static(
+					background-color,
+					true
+				);
+				@include mount-color-class(background-color, true);
+			}
+
+			&\:color {
+				@include mount-bg-text-class-static(color, true);
+				@include mount-color-class(color, true);
+			}
+		}
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg-1: var(--bg-dark-1);
+		--bg-2: var(--bg-dark-2);
+		--bg-3: var(--bg-dark-3);
+
+		--color-1: var(--color-dark-1);
+		--color-2: var(--color-dark-2);
+		--color-3: var(--color-dark-3);
+	}
+
+	.dark {
+		&\:bg {
+			@include mount-bg-text-class-static(
+				'bg',
+				background-color,
+				false
+			);
+			@include mount-color-class(background-color, false);
+		}
+
+		&\:color {
+			@include mount-bg-text-class-static(
+				'color',
+				color,
+				false
+			);
+			@include mount-color-class(color, false);
+		}
+
+		&\:hover {
+			&\:bg {
+				@include mount-bg-text-class-static(
+					'bg',
+					background-color,
+					true
+				);
+				@include mount-color-class(background-color, true);
+			}
+
+			&\:color {
+				@include mount-bg-text-class-static(
+					'color',
+					color,
+					true
+				);
+				@include mount-color-class(color, true);
+			}
+		}
+	}
+}

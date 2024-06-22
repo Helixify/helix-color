@@ -1,0 +1,29 @@
+@mixin font-generator($hovered: false) {
+	@include property-bg-text-dynamic(
+		'color',
+		'color',
+		$hovered
+	);
+	@include property-bg-text-static(
+		'color',
+		'color',
+		'light',
+		$hovered
+	);
+	@include property-bg-text-static(
+		'color',
+		'color',
+		'dark',
+		$hovered
+	);
+}
+
+.color {
+	@include font-generator(false);
+}
+
+.hover {
+	&\:color {
+		@include font-generator(true);
+	}
+}

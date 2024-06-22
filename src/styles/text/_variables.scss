@@ -1,0 +1,11 @@
+@mixin text-variables {
+	// Light theme
+	--color-light-1: hsla(var(--hsl-base), 5%, 1);
+	--color-light-2: hsla(var(--hsl-base), 20%, 1);
+	--color-light-3: hsla(var(--hsl-base), 40%, 1);
+
+	// Dark theme
+	--color-dark-1: hsla(var(--hsl-base), 100%, 1);
+	--color-dark-2: hsla(var(--hsl-base), 95%, 1);
+	--color-dark-3: hsla(var(--hsl-base), 90%, 1);
+}
