@@ -1,0 +1,115 @@
+@use 'sass:list';
+
+/// Lista com todas as cores de background
+$backgrounds: (
+	'bg-light': (
+		'base': #{0,
+		0%},
+		'variants': (
+			'primary': 100%,
+			'secondary': 96%,
+			'tertiary': 92%,
+		),
+	),
+	'bg-dark': (
+		'base': #{0,
+		0%},
+		'variants': (
+			'primary': 8%,
+			'secondary': 12%,
+			'tertiary': 16%,
+		),
+	),
+);
+
+// Lista com todas as cores de texto
+$texts: (
+	'text-light': (
+		'base': #{0,
+		0%},
+		'variants': (
+			'primary': 8%,
+			'secondary': 32%,
+			'tertiary': 64%,
+		),
+	),
+	'text-dark': (
+		'base': #{0,
+		0%},
+		'variants': (
+			'primary': 92%,
+			'secondary': 68%,
+			'tertiary': 36%,
+		),
+	),
+);
+
+// Lista com todas as cores
+$colors: (
+	'red': (
+		'base': #{5,
+		80%},
+		'variants': (
+			'100': 90%,
+			'300': 80%,
+			'500': 60%,
+			'700': 40%,
+			'900': 30%,
+		),
+	),
+	'orange': (
+		'base': #{20,
+		90%},
+		'variants': (
+			'100': 90%,
+			'300': 80%,
+			'500': 60%,
+			'700': 40%,
+			'900': 30%,
+		),
+	),
+	'yellow': (
+		'base': #{45,
+		100%},
+		'variants': (
+			'100': 90%,
+			'300': 80%,
+			'500': 60%,
+			'700': 40%,
+			'900': 30%,
+		),
+	),
+	'green': (
+		'base': #{135,
+		60%},
+		'variants': (
+			'100': 90%,
+			'300': 80%,
+			'500': 60%,
+			'700': 40%,
+			'900': 30%,
+		),
+	),
+	'blue': (
+		'base': #{220,
+		90%},
+		'variants': (
+			'100': 90%,
+			'300': 80%,
+			'500': 60%,
+			'700': 40%,
+			'900': 30%,
+		),
+	),
+	'purple': (
+		'base': #{275,
+		100%},
+		'variants': (
+			'100': 90%,
+			'300': 80%,
+			'500': 60%,
+			'700': 40%,
+			'900': 30%,
+		),
+	),
+);

@@ -1,0 +1,6 @@
+@use './utilities/variables' as *;
+@use './abstracts/mixins' as mixin;
+@use './abstracts/variables' as variable;
+
+@include mixin.test('color', variable.$colors);
+@include mixin.test('background-color', variable.$colors);

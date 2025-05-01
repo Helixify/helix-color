@@ -1,0 +1,65 @@
+@use 'sass:map';
+@use 'sass:string';
+@use 'variables' as v;
+
+/// Mixin para gerar variáveis css com base na lista sass
+///
+/// @requires {variable} base-colors - Array responsável por ter todas as cores base
+/// @requires {mixin} variant-generator - Mixin responsável por criar todas as variações de uma unica cor
+///
+/// @param {variable}  variable - Necessita de uma variáveis com esse type:
+/// 	$variable: (
+/// 		'name': (
+/// 			'base': #{value},
+/// 			'variants': (
+/// 				'key': #{value},
+/// 			),
+/// 		),
+///
+/// @example scss - @include variables-generator($variable);
+///
+/// @output Variáveis com todas as variantes da variável input
+@mixin variables-generator($variable) {
+	@each $key, $value in $variable {
+		$base: map.get($value, 'base');
+		$variants: map.get($value, 'variants');
+
+		--#{$key}-base: #{$base};
+
+		@each $variant-key, $variant-value in $variants {
+			--#{$key}-#{$variant-key}: hsl(var(--#{$key}-base), #{$variant-value});
+		}
+	}
+}
+
+/// Gerar todas as variáveis css
+///
+/// @requires {variable} backgrounds - Lista com todas as cores de background
+/// @requires {variable} texts - Lista com todas as cores de texto
+/// @requires {variable} colors - Lista com todas as cores
+/// @requires {mixin} variant-generator - Mixin para gerar variáveis css com base na lista sass
+///
+/// @example scss - @include all-variables-generator;
+///
+/// @output Todas as variáveis disponíveis no projeto
+@mixin all-variables-generator() {
+	@include variables-generator(v.$backgrounds);
+	@include variables-generator(v.$texts);
+	@include variables-generator(v.$colors);
+}
+
+@mixin test($property, $variable) {
+	@each $key, $value in $variable {
+		$variants: map.get($value, 'variants');
+		$propery-name: $property;
+
+		@if ($property == 'background-color') {
+			$propery-name: 'bg';
+		}
+		@each $variant-key, $variant-value in $variants {
+			.#{$propery-name}-#{$key}-#{$variant-key} {
+				#{$property}: var(--#{key}-#{$variant-key});
+			}
+		}
+	}
+}

@@ -2,34 +2,35 @@
 	"name": "helix-color",
 	"private": false,
 	"type": "module",
-	"main": "dist/compressed/main.css",
-	"version": "0.6.0",
-	"description": "A color library for dev",
+	"main": "index.js",
+	"version": "0.7.0",
+	"description": "A framework css for dev",
 	"author": "André Luiz",
-	"homepage": "https://www.helixify.dev/helixcolor",
+	"homepage": "https://www.helixify.dev/helix-css",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Helixify/HelixColor.git"
+		"url": "git+https://github.com/Helixify/helix-css.git"
 	},
 	"files": [
-		"dist/compressed/main.css"
+		"dist/main.min.css"
 	],
 	"license": "MIT",
 	"scripts": {
 		"dev": "vite",
-		"build": "gulp",
+		"build": "vite build",
+		"format": "prettier --write .",
 		"preview": "vite preview"
 	},
 	"devDependencies": {
-		"gulp": "^5.0.0",
-		"gulp-sass": "^5.1.0",
-		"postcss-preset-env": "^8.4.2",
-		"sass": "^1.63.3",
-		"vite": "^4.3.9"
+		"clean-css": "^5.3.3",
+		"prettier": "^3.3.3",
+		"sass": "^1.79.4",
+		"vite": "^6.2.6"
 	},
 	"keywords": [
 		"helix",
-		"css-color",
+		"helixcss",
+		"helix-css",
 		"css-framework"
 	]
 }

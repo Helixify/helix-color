@@ -1,0 +1,6 @@
+@use '../abstracts/mixins' as m;
+
+/// Root raiz do projeto com todas as variáveis
+:root {
+	@include m.all-variables-generator;
+}
