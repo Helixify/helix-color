@@ -2,7 +2,7 @@
 
 /// Lista com todas as cores de background
 $backgrounds: (
-	'bg-light': (
+	'light': (
 		'base': #{0,
 		0%},
 		'variants': (
@@ -11,7 +11,7 @@ $backgrounds: (
 			'tertiary': 92%,
 		),
 	),
-	'bg-dark': (
+	'dark': (
 		'base': #{0,
 		0%},
 		'variants': (
@@ -24,7 +24,7 @@ $backgrounds: (
 
 // Lista com todas as cores de texto
 $texts: (
-	'text-light': (
+	'light': (
 		'base': #{0,
 		0%},
 		'variants': (
@@ -33,7 +33,7 @@ $texts: (
 			'tertiary': 64%,
 		),
 	),
-	'text-dark': (
+	'dark': (
 		'base': #{0,
 		0%},
 		'variants': (
@@ -112,4 +112,22 @@ $colors: (
 			'900': 30%,
 		),
 	),
+);
+
+/// Variável com nome comum para variantes de cores
+$human-color-variant: (
+	'100': 'light',
+	'300': 'lighten',
+	'500': 'regular',
+	'700': 'darken',
+	'900': 'dark',
+);
+
+/// Variável com todos os breakpoints
+$breakpoints: (
+	'2xl': 96rem,
+	'xl': 80rem,
+	'lg': 64rem,
+	'md': 48rem,
+	'sm': 40rem,
 );

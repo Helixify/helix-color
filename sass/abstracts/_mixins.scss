@@ -1,6 +1,8 @@
 @use 'sass:map';
 @use 'sass:string';
+@use 'sass:list';
 @use 'variables' as v;
+@use 'functions' as f;
 
 /// Mixin para gerar variáveis css com base na lista sass
 ///
@@ -19,20 +21,28 @@
 /// @example scss - @include variables-generator($variable);
 ///
 /// @output Variáveis com todas as variantes da variável input
-@mixin variables-generator($variable) {
+@mixin variables-generator($variable, $prefix: null) {
 	@each $key, $value in $variable {
 		$base: map.get($value, 'base');
 		$variants: map.get($value, 'variants');
 
-		--#{$key}-base: #{$base};
+		@if $prefix {
+			--#{$prefix}-#{$key}-base: #{$base};
 
-		@each $variant-key, $variant-value in $variants {
-			--#{$key}-#{$variant-key}: hsl(var(--#{$key}-base), #{$variant-value});
+			@each $variant-key, $variant-value in $variants {
+				--#{$prefix}-#{$key}-#{$variant-key}: hsl(var(--#{$prefix}-#{$key}-base), #{$variant-value});
+			}
+		} @else {
+			--#{$key}-base: #{$base};
+
+			@each $variant-key, $variant-value in $variants {
+				--#{$key}-#{$variant-key}: hsl(var(--#{$key}-base), #{$variant-value});
+			}
 		}
 	}
 }
 
-/// Gerar todas as variáveis css
+/// Mixin responsável por gerar todas as variáveis css
 ///
 /// @requires {variable} backgrounds - Lista com todas as cores de background
 /// @requires {variable} texts - Lista com todas as cores de texto
@@ -43,23 +53,162 @@
 ///
 /// @output Todas as variáveis disponíveis no projeto
 @mixin all-variables-generator() {
-	@include variables-generator(v.$backgrounds);
-	@include variables-generator(v.$texts);
+	@include variables-generator(v.$backgrounds, 'bg');
+	@include variables-generator(v.$texts, 'text');
 	@include variables-generator(v.$colors);
 }
 
-@mixin test($property, $variable) {
-	@each $key, $value in $variable {
+/// Mixin responsável por criar classes de cor base para background e fonte
+///
+/// @requires {function} get-prefix - Função responsável por montar um prefixo com base na propriedade utilizada
+///
+/// @param {variable} property - Representa a propriedade css que será utilizada
+/// @param {variable} list - Lista com todas as cores de background
+///
+/// @output Todas as classses css com cores padrões para background ou texto
+@mixin class-base-generator($property, $list) {
+	@each $key, $value in $list {
 		$variants: map.get($value, 'variants');
-		$propery-name: $property;
 
-		@if ($property == 'background-color') {
-			$propery-name: 'bg';
-		}
 		@each $variant-key, $variant-value in $variants {
-			.#{$propery-name}-#{$key}-#{$variant-key} {
-				#{$property}: var(--#{key}-#{$variant-key});
+			&-#{$key}-#{$variant-key} {
+				#{$property}: var(--#{$key}-#{$variant-key});
 			}
 		}
+	}
+}
+
+/// Mixin responsável por criar as classes base com esquema de cor
+///
+/// @param {variable} prefix - Prefixo da variável gerada
+/// @param {variable} property - A propriedade css que será utilizada na classe
+/// @param {variable} list - Qual a lista scss que será a base
+///
+/// @example scss - @include m.test('background-color', 'bg', $backgrounds);
+///
+/// @output Todas as classes padrão do color scheme
+@mixin class-base-color-scheme-generator($property, $prefix, $list) {
+	$first-key: list.nth(map.keys($list), 1);
+
+	$first-value: map.get($list, $first-key);
+
+	$variants: map.get($first-value, 'variants');
+
+	@each $variant-key, $variant-value in $variants {
+		&-#{$variant-key} {
+			#{$property}: var(--#{$prefix}-#{$variant-key});
+		}
+	}
+}
+
+/// Mixin responsável por criar as classes de cor com base nas variáveis criadas
+///
+/// @requires {function} get-human-variant - Função responsável por retornar o nome mais humano para uma variante de cor
+/// @requires {function} get-prefix - Função responsável por montar um prefixo com base na propriedade utilizada
+///
+/// @param {variable} property - Representa a propriedade css que será utilizada
+///
+/// @example scss - @include class-color-generator('background-color');
+///
+/// @output Todas as classes css com base na lista de cores scss
+@mixin class-color-generator($property) {
+	@each $key, $value in v.$colors {
+		$variants: map.get($value, 'variants');
+		@each $variant-key, $variant-value in $variants {
+			&-#{$key}-#{$variant-key},
+			&-#{$key}-#{f.get-human-variant($variant-key)} {
+				#{$property}: var(--#{$key}-#{$variant-key});
+			}
+		}
+	}
+}
+
+/// Mixin responsável por criar variáveis de background e texto com prefers-color-scheme
+///
+/// @param {variable} prefix - Prefixo da variável gerada
+/// @param {variable} color-schema - O esquema de cor que será gerado
+/// @param {variable} list - Qual a lista scss que será a base
+///
+/// @example scss - @include variable-color-scheme-generator('bg', 'light', $backgrounds);
+///
+/// @output Todas as variáveis base em um esquema de cor específico
+@mixin variable-color-scheme-generator($prefix, $color-schema, $list) {
+	@each $key, $value in $list {
+		$variants: map.get($value, 'variants');
+
+		@if ($color-schema == $key) {
+			@each $variant-key, $variant-value in $variants {
+				--#{$prefix}-#{$variant-key}: hsl(var(--#{$key}-base), #{$variant-value});
+			}
+		}
+	}
+}
+
+/// Mixin responsável por gerar todos os media queries
+///
+/// @require get-breakpoint - Função responsável por retornar o valor de um breakpoint
+///
+/// @param {variable} breakpoint - Nome do breakpoint que deseja acessar
+///
+/// @example scss - @include media-down('sm') { ... }
+///
+/// @output Media queries específicos para os breakpoints
+@mixin media-down($breakpoint) {
+	@media (max-width: f.get-breakpoint($breakpoint)) {
+		@content;
+	}
+}
+
+/// Mixin responsável por gerar todas as classes com prefixo responsivo
+///
+/// @param {variable} breakpoint - Nome do breakpoint que será gerado
+/// @param {variable} class - Qual o nome da classe que será gerada
+///
+/// @example scss - @include responsive-class('sm', 'bg') { ... }
+///
+/// @output A classe desejada com um prefixo de responsivo
+@mixin responsive-class($breakpoint, $class) {
+	@if $breakpoint == '2xl' {
+		.\32xl\:#{$class} {
+			@content;
+		}
+	} @else {
+		.#{$breakpoint}\:#{$class} {
+			@content;
+		}
+	}
+}
+
+/// Mixin responsável por gerar todas as classes responsivas
+///
+/// @require {mixin} responsive-class - Mixin responsável por gerar todas as classes com prefixo responsivo
+///
+/// @param {variable} breakpoint - Nome do breakpoint que será gerado
+///
+/// @example scss - @include responsive('sm');
+///
+/// @output Todas as classes do projeto com os seus prefixos responsivos
+@mixin responsive($breakpoint) {
+	@include responsive-class($breakpoint, 'bg') {
+		/// Default backgrounds
+
+		@include class-base-generator('background-color', v.$backgrounds);
+
+		/// Backgrounds with color scheme
+		@include class-base-color-scheme-generator('background-color', 'bg', v.$backgrounds);
+
+		/// Color backgrounds
+		@include class-color-generator('background-color');
+	}
+
+	@include responsive-class($breakpoint, 'color') {
+		/// Default texts
+		@include class-base-generator('color', v.$texts);
+
+		/// Texts with color scheme
+		@include class-base-color-scheme-generator('color', 'text', v.$texts);
+
+		/// Color texts
+		@include class-color-generator('color');
 	}
 }

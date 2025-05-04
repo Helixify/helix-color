@@ -1,6 +1,5 @@
 @use './utilities/variables' as *;
-@use './abstracts/mixins' as mixin;
-@use './abstracts/variables' as variable;
+@use './abstracts/index' as *;
 
-@include mixin.test('color', variable.$colors);
-@include mixin.test('background-color', variable.$colors);
+@use './utilities/prefers-color-scheme' as *;
+@use './utilities/responsive' as *;

@@ -1,3 +1,25 @@
-@use 'variables' as *;
-@use 'functions' as *;
-@use 'mixins' as *;
+@use 'variables' as v;
+@use 'functions' as f;
+@use 'mixins' as m;
+
+.bg {
+	/// Default backgrounds
+	@include m.class-base-generator('background-color', v.$backgrounds);
+
+	/// Backgrounds with color scheme
+	@include m.class-base-color-scheme-generator('background-color', 'bg', v.$backgrounds);
+
+	/// Color backgrounds
+	@include m.class-color-generator('background-color');
+}
+
+.color {
+	/// Default texts
+	@include m.class-base-generator('color', v.$texts);
+
+	/// Texts with color scheme
+	@include m.class-base-color-scheme-generator('color', 'text', v.$texts);
+
+	/// Color texts
+	@include m.class-color-generator('color');
+}

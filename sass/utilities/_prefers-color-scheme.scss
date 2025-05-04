@@ -1,0 +1,16 @@
+@use '../abstracts/mixins' as mixin;
+@use '../abstracts/variables' as variable;
+
+@media (prefers-color-scheme: light) {
+	:root {
+		@include mixin.variable-color-scheme-generator('bg', 'light', variable.$backgrounds);
+		@include mixin.variable-color-scheme-generator('text', 'light', variable.$texts);
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		@include mixin.variable-color-scheme-generator('bg', 'dark', variable.$backgrounds);
+		@include mixin.variable-color-scheme-generator('text', 'dark', variable.$texts);
+	}
+}

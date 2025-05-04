@@ -1,0 +1,10 @@
+@use 'sass:map';
+
+@use '../abstracts/mixins' as mixin;
+@use '../abstracts/variables' as variable;
+
+@each $breakpoint in map.keys(variable.$breakpoints) {
+	@include mixin.media-down($breakpoint) {
+		@include mixin.responsive($breakpoint);
+	}
+}
