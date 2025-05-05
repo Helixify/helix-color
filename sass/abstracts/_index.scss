@@ -14,19 +14,6 @@
 
 	/// Color backgrounds
 	@include m.class-color-generator('background-color');
-
-	/// Hovered classes
-	/// Generic backgrounds
-	@include m.generic-background-generator(true);
-
-	/// Default backgrounds
-	@include m.class-base-generator('background-color', v.$backgrounds, true);
-
-	/// Backgrounds with color scheme
-	@include m.class-base-color-scheme-generator('background-color', 'bg', v.$backgrounds, true);
-
-	/// Color backgrounds
-	@include m.class-color-generator('background-color', true);
 }
 
 .color {
@@ -41,17 +28,34 @@
 
 	/// Color texts
 	@include m.class-color-generator('color');
+}
 
-	/// Hovered classes
-	/// Generic colors
-	@include m.generic-color-generator(true);
+.hover\: {
+	&bg {
+		/// Generic backgrounds
+		@include m.generic-background-generator(true);
 
-	/// Default texts
-	@include m.class-base-generator('color', v.$texts, true);
+		/// Default backgrounds
+		@include m.class-base-generator('background-color', v.$backgrounds, true);
 
-	/// Texts with color scheme
-	@include m.class-base-color-scheme-generator('color', 'text', v.$texts, true);
+		/// Backgrounds with color scheme
+		@include m.class-base-color-scheme-generator('background-color', 'bg', v.$backgrounds, true);
 
-	/// Color texts
-	@include m.class-color-generator('color', true);
+		/// Color backgrounds
+		@include m.class-color-generator('background-color', true);
+	}
+
+	&color {
+		/// Generic colors
+		@include m.generic-color-generator(true);
+
+		/// Default texts
+		@include m.class-base-generator('color', v.$texts, true);
+
+		/// Texts with color scheme
+		@include m.class-base-color-scheme-generator('color', 'text', v.$texts, true);
+
+		/// Color texts
+		@include m.class-color-generator('color', true);
+	}
 }

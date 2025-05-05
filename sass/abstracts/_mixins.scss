@@ -248,14 +248,26 @@
 /// @example scss - @include responsive-class('sm', 'bg') { ... }
 ///
 /// @output The desired class with a responsive prefix
-@mixin responsive-class($breakpoint, $class) {
-	@if $breakpoint == '2xl' {
-		.\32xl\:#{$class} {
-			@content;
+@mixin responsive-class($breakpoint, $class, $hovered: false) {
+	@if ($hovered) {
+		@if $breakpoint == '2xl' {
+			.\32xl\:hover\:#{$class} {
+				@content;
+			}
+		} @else {
+			.#{$breakpoint}\:hover\:#{$class} {
+				@content;
+			}
 		}
 	} @else {
-		.#{$breakpoint}\:#{$class} {
-			@content;
+		@if $breakpoint == '2xl' {
+			.\32xl\:#{$class} {
+				@content;
+			}
+		} @else {
+			.#{$breakpoint}\:#{$class} {
+				@content;
+			}
 		}
 	}
 }
@@ -282,19 +294,6 @@
 
 		/// Color backgrounds
 		@include class-color-generator('background-color');
-
-		/// Hovered classes
-		/// Generic backgrounds
-		@include generic-background-generator(true);
-
-		/// Default backgrounds
-		@include class-base-generator('background-color', v.$backgrounds, true);
-
-		/// Backgrounds with color scheme
-		@include class-base-color-scheme-generator('background-color', 'bg', v.$backgrounds, true);
-
-		/// Color backgrounds
-		@include class-color-generator('background-color', true);
 	}
 
 	@include responsive-class($breakpoint, 'color') {
@@ -309,8 +308,23 @@
 
 		/// Color texts
 		@include class-color-generator('color');
+	}
 
-		/// Hovered classes
+	@include responsive-class($breakpoint, 'bg', true) {
+		/// Generic backgrounds
+		@include generic-background-generator(true);
+
+		/// Default backgrounds
+		@include class-base-generator('background-color', v.$backgrounds, true);
+
+		/// Backgrounds with color scheme
+		@include class-base-color-scheme-generator('background-color', 'bg', v.$backgrounds, true);
+
+		/// Color backgrounds
+		@include class-color-generator('background-color', true);
+	}
+
+	@include responsive-class($breakpoint, 'color', true) {
 		/// Generic colors
 		@include generic-color-generator(true);
 
