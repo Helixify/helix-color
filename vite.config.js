@@ -11,9 +11,7 @@ const handleError = (phase, error) => {
 	}
 	if (error.sassError) {
 		console.error(`  Error SASS: ${error.sassError}`)
-		console.error(
-			`  In: ${error.file}:${error.line}:${error.column}`
-		)
+		console.error(`  In: ${error.file}:${error.line}:${error.column}`)
 	}
 }
 
@@ -21,10 +19,10 @@ export default defineConfig({
 	publicDir: false,
 
 	server: {
-    fs: {
-      deny: ['.env', 'secret-folder', 'config.js']
-    }
-  },
+		fs: {
+			deny: ['.env', 'secret-folder', 'config.js'],
+		},
+	},
 
 	css: {
 		preprocessorOptions: {
@@ -42,7 +40,7 @@ export default defineConfig({
 
 		rollupOptions: {
 			input: {
-				main: resolve(__dirname, 'sass/main.scss')
+				main: resolve(__dirname, 'sass/main.scss'),
 			},
 
 			output: {
@@ -77,9 +75,7 @@ export default defineConfig({
 					// Criar versão minificada
 					await createMinifiedCss()
 
-					console.log(
-						'✓ Build process completed successfully'
-					)
+					console.log('✓ Build process completed successfully')
 				} catch (error) {
 					handleError('build process', error)
 				}
@@ -94,30 +90,18 @@ export default defineConfig({
 const createScssPlugin = async (modules) => {
 	try {
 		for (const name of modules) {
-			const filePath = resolve(
-				__dirname,
-				`sass/${name}.scss`
-			)
+			const filePath = resolve(__dirname, `sass/${name}.scss`)
 			const result = sass.compile(filePath, {
 				sourceMap: true,
 				style: 'expanded',
 				outFile: `${name}.css`,
 			})
 
-			const cssOut = resolve(
-				__dirname,
-				`dist/module/${name}.css`
-			)
-			const mapOut = resolve(
-				__dirname,
-				`dist/module/${name}.css.map`
-			)
+			const cssOut = resolve(__dirname, `dist/module/${name}.css`)
+			const mapOut = resolve(__dirname, `dist/module/${name}.css.map`)
 
 			await fs.writeFile(cssOut, result.css)
-			await fs.writeFile(
-				mapOut,
-				JSON.stringify(result.sourceMap)
-			)
+			await fs.writeFile(mapOut, JSON.stringify(result.sourceMap))
 		}
 
 		console.log('✓ Compiled SCSS modules with source maps')
@@ -133,30 +117,17 @@ const createMinifiedCss = async () => {
 	try {
 		const { default: CleanCSS } = await import('clean-css')
 		const mainCssPath = resolve(__dirname, 'dist/main.css')
-		const cssContent = await fs.readFile(
-			mainCssPath,
-			'utf-8'
-		)
+		const cssContent = await fs.readFile(mainCssPath, 'utf-8')
 		const minifier = new CleanCSS({
 			level: 2,
 			sourceMap: true,
 		})
 
 		const minified = minifier.minify(cssContent)
-		await fs.writeFile(
-			resolve(__dirname, 'dist/main.min.css'),
-			minified.styles,
-			'utf-8'
-		)
-		await fs.writeFile(
-			resolve(__dirname, 'dist/main.min.css.map'),
-			minified.sourceMap.toString(),
-			'utf-8'
-		)
+		await fs.writeFile(resolve(__dirname, 'dist/main.min.css'), minified.styles, 'utf-8')
+		await fs.writeFile(resolve(__dirname, 'dist/main.min.css.map'), minified.sourceMap.toString(), 'utf-8')
 
-		console.log(
-			'✓ Generated minified version: main.min.css'
-		)
+		console.log('✓ Generated minified version: main.min.css')
 	} catch (error) {
 		handleError('create minified css', error)
 		throw error

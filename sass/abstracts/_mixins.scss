@@ -4,12 +4,12 @@
 @use 'variables' as v;
 @use 'functions' as f;
 
-/// Mixin para gerar variáveis css com base na lista sass
+/// Mixin to generate CSS variables based on the sass list
 ///
-/// @requires {variable} base-colors - Array responsável por ter todas as cores base
-/// @requires {mixin} variant-generator - Mixin responsável por criar todas as variações de uma unica cor
+/// @requires {variable} base-colors - Array responsible for having all base colors
+/// @requires {mixin} variant-generator - Mixin responsible for creating all variations of a single color
 ///
-/// @param {variable}  variable - Necessita de uma variáveis com esse type:
+/// @param {variable}  variable - Requires a variable with this type:
 /// 	$variable: (
 /// 		'name': (
 /// 			'base': #{value},
@@ -20,7 +20,7 @@
 ///
 /// @example scss - @include variables-generator($variable);
 ///
-/// @output Variáveis com todas as variantes da variável input
+/// @output Variables with all variants of the input variable
 @mixin variables-generator($variable, $prefix: null) {
 	@each $key, $value in $variable {
 		$base: map.get($value, 'base');
@@ -42,52 +42,120 @@
 	}
 }
 
-/// Mixin responsável por gerar todas as variáveis css
+/// Mixin responsible for generating all CSS variables
 ///
-/// @requires {variable} backgrounds - Lista com todas as cores de background
-/// @requires {variable} texts - Lista com todas as cores de texto
-/// @requires {variable} colors - Lista com todas as cores
-/// @requires {mixin} variant-generator - Mixin para gerar variáveis css com base na lista sass
+/// @requires {variable} backgrounds - List with all background colors
+/// @requires {variable} texts - List with all text colors
+/// @requires {variable} colors - List with all colors
+/// @requires {mixin} variant-generator - Mixin to generate CSS variables based on the sass list
 ///
 /// @example scss - @include all-variables-generator;
 ///
-/// @output Todas as variáveis disponíveis no projeto
+/// @output All variables available in the project
 @mixin all-variables-generator() {
 	@include variables-generator(v.$backgrounds, 'bg');
 	@include variables-generator(v.$texts, 'text');
 	@include variables-generator(v.$colors);
 }
 
-/// Mixin responsável por criar classes de cor base para background e fonte
+/// Mixin responsible for creating generic background classes
 ///
-/// @requires {function} get-prefix - Função responsável por montar um prefixo com base na propriedade utilizada
+/// @param {variable} hovered - Defines if the generated classes will have hover state
 ///
-/// @param {variable} property - Representa a propriedade css que será utilizada
-/// @param {variable} list - Lista com todas as cores de background
+/// @example scss - @include generic-background-generator;
 ///
-/// @output Todas as classses css com cores padrões para background ou texto
-@mixin class-base-generator($property, $list) {
+/// @output Generic background color classes
+@mixin generic-background-generator($hovered: false) {
+	@if ($hovered) {
+		&-inherit:hover {
+			background-color: inherit;
+		}
+		&-currentcolor:hover {
+			background-color: currentcolor;
+		}
+		&-transparent:hover {
+			background-color: transparent;
+		}
+	} @else {
+		&-inherit {
+			background-color: inherit;
+		}
+		&-currentcolor {
+			background-color: currentcolor;
+		}
+		&-transparent {
+			background-color: transparent;
+		}
+	}
+}
+
+/// Mixin responsible for creating generic color classes
+///
+/// @param {variable} hovered - Defines if the generated classes will have hover state
+///
+/// @example scss - @include generic-color-generator;
+///
+/// @output Generic color classes
+@mixin generic-color-generator($hovered: false) {
+	@if ($hovered) {
+		&-inherit:hover {
+			color: inherit;
+		}
+		&-white:hover {
+			color: hsl(0, 0%, 100%);
+		}
+		&-black:hover {
+			color: hsl(0, 0%, 0%);
+		}
+	} @else {
+		&-inherit {
+			color: inherit;
+		}
+		&-white {
+			color: hsl(0, 0%, 100%);
+		}
+		&-black {
+			color: hsl(0, 0%, 0%);
+		}
+	}
+}
+
+/// Mixin responsible for creating base color classes for background and font
+///
+/// @param {variable} property - Represents the CSS property that will be used
+/// @param {variable} list - List with all background colors
+/// @param {variable} hovered - Defines if the generated classes will have hover state
+///
+/// @output All CSS classes with default colors for background or text
+@mixin class-base-generator($property, $list, $hovered: false) {
 	@each $key, $value in $list {
 		$variants: map.get($value, 'variants');
 
 		@each $variant-key, $variant-value in $variants {
-			&-#{$key}-#{$variant-key} {
-				#{$property}: var(--#{$key}-#{$variant-key});
+			@if ($hovered) {
+				&-#{$key}-#{$variant-key}:hover {
+					#{$property}: var(--#{f.get-prefix($property)}-#{$key}-#{$variant-key});
+				}
+			} @else {
+				&-#{$key}-#{$variant-key} {
+					#{$property}: var(--#{f.get-prefix($property)}-#{$key}-#{$variant-key});
+				}
 			}
 		}
 	}
 }
 
-/// Mixin responsável por criar as classes base com esquema de cor
+/// Mixin responsible for creating base classes with color scheme
 ///
-/// @param {variable} prefix - Prefixo da variável gerada
-/// @param {variable} property - A propriedade css que será utilizada na classe
-/// @param {variable} list - Qual a lista scss que será a base
+/// @param {variable} prefix - Prefix of the generated variable
+/// @param {variable} property - The CSS property that will be used in the class
+/// @param {variable} list - Which SCSS list will be the base
+/// @param {variable} hovered - Defines if the generated classes will have hover state
 ///
 /// @example scss - @include m.test('background-color', 'bg', $backgrounds);
 ///
-/// @output Todas as classes padrão do color scheme
-@mixin class-base-color-scheme-generator($property, $prefix, $list) {
+/// @output All default classes of the color scheme
+@mixin class-base-color-scheme-generator($property, $prefix, $list, $hovered: false) {
 	$first-key: list.nth(map.keys($list), 1);
 
 	$first-value: map.get($list, $first-key);
@@ -95,78 +163,91 @@
 	$variants: map.get($first-value, 'variants');
 
 	@each $variant-key, $variant-value in $variants {
-		&-#{$variant-key} {
-			#{$property}: var(--#{$prefix}-#{$variant-key});
-		}
-	}
-}
-
-/// Mixin responsável por criar as classes de cor com base nas variáveis criadas
-///
-/// @requires {function} get-human-variant - Função responsável por retornar o nome mais humano para uma variante de cor
-/// @requires {function} get-prefix - Função responsável por montar um prefixo com base na propriedade utilizada
-///
-/// @param {variable} property - Representa a propriedade css que será utilizada
-///
-/// @example scss - @include class-color-generator('background-color');
-///
-/// @output Todas as classes css com base na lista de cores scss
-@mixin class-color-generator($property) {
-	@each $key, $value in v.$colors {
-		$variants: map.get($value, 'variants');
-		@each $variant-key, $variant-value in $variants {
-			&-#{$key}-#{$variant-key},
-			&-#{$key}-#{f.get-human-variant($variant-key)} {
-				#{$property}: var(--#{$key}-#{$variant-key});
+		@if ($hovered) {
+			&-#{$variant-key}:hover {
+				#{$property}: var(--#{$prefix}-#{$variant-key});
+			}
+		} @else {
+			&-#{$variant-key} {
+				#{$property}: var(--#{$prefix}-#{$variant-key});
 			}
 		}
 	}
 }
 
-/// Mixin responsável por criar variáveis de background e texto com prefers-color-scheme
+/// Mixin responsible for creating color classes based on created variables
 ///
-/// @param {variable} prefix - Prefixo da variável gerada
-/// @param {variable} color-schema - O esquema de cor que será gerado
-/// @param {variable} list - Qual a lista scss que será a base
+/// @requires {function} get-human-variant - Function responsible for returning the most human name for a color variant
+///
+/// @param {variable} property - Represents the CSS property that will be used
+/// @param {variable} hovered - Defines if the generated classes will have hover state
+///
+/// @example scss - @include class-color-generator('background-color');
+///
+/// @output All CSS classes based on the SCSS color list
+@mixin class-color-generator($property, $hovered: false) {
+	@each $key, $value in v.$colors {
+		$variants: map.get($value, 'variants');
+		@each $variant-key, $variant-value in $variants {
+			@if ($hovered) {
+				&-#{$key}-#{$variant-key}:hover,
+				&-#{$key}-#{f.get-human-variant($variant-key)}:hover {
+					#{$property}: var(--#{$key}-#{$variant-key});
+				}
+			} @else {
+				&-#{$key}-#{$variant-key},
+				&-#{$key}-#{f.get-human-variant($variant-key)} {
+					#{$property}: var(--#{$key}-#{$variant-key});
+				}
+			}
+		}
+	}
+}
+
+/// Mixin responsible for creating background and text variables with prefers-color-scheme
+///
+/// @param {variable} prefix - Prefix of the generated variable
+/// @param {variable} color-schema - The color scheme that will be generated
+/// @param {variable} list - Which SCSS list will be the base
 ///
 /// @example scss - @include variable-color-scheme-generator('bg', 'light', $backgrounds);
 ///
-/// @output Todas as variáveis base em um esquema de cor específico
+/// @output All base variables in a specific color scheme
 @mixin variable-color-scheme-generator($prefix, $color-schema, $list) {
 	@each $key, $value in $list {
 		$variants: map.get($value, 'variants');
 
 		@if ($color-schema == $key) {
 			@each $variant-key, $variant-value in $variants {
-				--#{$prefix}-#{$variant-key}: hsl(var(--#{$key}-base), #{$variant-value});
+				--#{$prefix}-#{$variant-key}: hsl(var(--#{$prefix}-#{$key}-base), #{$variant-value});
 			}
 		}
 	}
 }
 
-/// Mixin responsável por gerar todos os media queries
+/// Mixin responsible for generating all media queries
 ///
-/// @require get-breakpoint - Função responsável por retornar o valor de um breakpoint
+/// @require get-breakpoint - Function responsible for returning the value of a breakpoint
 ///
-/// @param {variable} breakpoint - Nome do breakpoint que deseja acessar
+/// @param {variable} breakpoint - Name of the breakpoint you want to access
 ///
 /// @example scss - @include media-down('sm') { ... }
 ///
-/// @output Media queries específicos para os breakpoints
+/// @output Specific media queries for breakpoints
 @mixin media-down($breakpoint) {
 	@media (max-width: f.get-breakpoint($breakpoint)) {
 		@content;
 	}
 }
 
-/// Mixin responsável por gerar todas as classes com prefixo responsivo
+/// Mixin responsible for generating all classes with responsive prefix
 ///
-/// @param {variable} breakpoint - Nome do breakpoint que será gerado
-/// @param {variable} class - Qual o nome da classe que será gerada
+/// @param {variable} breakpoint - Name of the breakpoint that will be generated
+/// @param {variable} class - What is the name of the class that will be generated
 ///
 /// @example scss - @include responsive-class('sm', 'bg') { ... }
 ///
-/// @output A classe desejada com um prefixo de responsivo
+/// @output The desired class with a responsive prefix
 @mixin responsive-class($breakpoint, $class) {
 	@if $breakpoint == '2xl' {
 		.\32xl\:#{$class} {
@@ -179,19 +260,21 @@
 	}
 }
 
-/// Mixin responsável por gerar todas as classes responsivas
+/// Mixin responsible for generating all responsive classes
 ///
-/// @require {mixin} responsive-class - Mixin responsável por gerar todas as classes com prefixo responsivo
+/// @require {mixin} responsive-class - Mixin responsible for generating all classes with responsive prefix
 ///
-/// @param {variable} breakpoint - Nome do breakpoint que será gerado
+/// @param {variable} breakpoint - Name of the breakpoint that will be generated
 ///
 /// @example scss - @include responsive('sm');
 ///
-/// @output Todas as classes do projeto com os seus prefixos responsivos
+/// @output All project classes with their responsive prefixes
 @mixin responsive($breakpoint) {
 	@include responsive-class($breakpoint, 'bg') {
-		/// Default backgrounds
+		/// Generic backgrounds
+		@include generic-background-generator;
 
+		/// Default backgrounds
 		@include class-base-generator('background-color', v.$backgrounds);
 
 		/// Backgrounds with color scheme
@@ -199,9 +282,25 @@
 
 		/// Color backgrounds
 		@include class-color-generator('background-color');
+
+		/// Hovered classes
+		/// Generic backgrounds
+		@include generic-background-generator(true);
+
+		/// Default backgrounds
+		@include class-base-generator('background-color', v.$backgrounds, true);
+
+		/// Backgrounds with color scheme
+		@include class-base-color-scheme-generator('background-color', 'bg', v.$backgrounds, true);
+
+		/// Color backgrounds
+		@include class-color-generator('background-color', true);
 	}
 
 	@include responsive-class($breakpoint, 'color') {
+		/// Generic colors
+		@include generic-color-generator;
+
 		/// Default texts
 		@include class-base-generator('color', v.$texts);
 
@@ -210,5 +309,18 @@
 
 		/// Color texts
 		@include class-color-generator('color');
+
+		/// Hovered classes
+		/// Generic colors
+		@include generic-color-generator(true);
+
+		/// Default texts
+		@include class-base-generator('color', v.$texts, true);
+
+		/// Texts with color scheme
+		@include class-base-color-scheme-generator('color', 'text', v.$texts, true);
+
+		/// Color texts
+		@include class-color-generator('color', true);
 	}
 }

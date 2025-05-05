@@ -1,15 +1,15 @@
 @use 'sass:map';
 @use 'variables' as v;
 
-/// Função responsável por retornar o nome mais humano para uma variante de cor
+/// Function responsible for returning the most human-readable name for a color variant
 ///
-/// @requires {variable} human-color-variant - Variável com nome comum para variantes de cores
+/// @requires {variable} human-color-variant - Variable with common names for color variants
 ///
-/// @param {variable} key - Código utilizado na cor em questão
+/// @param {variable} key - Code used in the color in question
 ///
 /// @example scss - #{get-human-variant($key)}
 ///
-/// @output O nome comum para uma variante de cor
+/// @output The common name for a color variant
 @function get-human-variant($key) {
 	@return map.get(v.$human-color-variant, $key);
 }
@@ -25,19 +25,19 @@
 	@if ($property == 'background-color') {
 		@return 'bg';
 	} @else {
-		@return 'color';
+		@return 'text';
 	}
 }
 
-/// Função responsável por retornar o valor de um breakpoint
+/// Function responsible for returning the value of a breakpoint
 ///
-/// @require {variable} breakpoints - Variável com todos os breakpoints
+/// @require {variable} breakpoints - Variable with all breakpoints
 ///
-/// @param {variable} key - Chave para acessar o valor do breakpoint
+/// @param {variable} key - Key to access the breakpoint value
 ///
 /// @example scss - #{get-breakpoint('sm'))}
 ///
-/// @output Valor de um breakpoint
+/// @output Value of a breakpoint
 @function get-breakpoint($key) {
 	@return map.get(v.$breakpoints, $key);
 }

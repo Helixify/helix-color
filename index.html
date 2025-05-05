@@ -2,50 +2,125 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Helix Color</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Helixify/HelixCSS@latest/dist/main.min.css" />
 		<link rel="stylesheet" href="./dist/main.css" />
 		<style>
-			.content-color {
-				display: flex;
-				flex-flow: row nowrap;
-				gap: 0.25rem;
+			main {
+				min-height: 100vh;
 			}
+
 			.box-color {
 				--_size: 6.25rem;
 				width: var(--_size);
 				height: var(--_size);
 				border-radius: 0.25rem;
 			}
-
-			.bg-red-100 {
-				background-color: var(--red-100);
-			}
-			.bg-red-200 {
-				background-color: var(--red-200);
-			}
-			.bg-red-300 {
-				background-color: var(--red-300);
-			}
-			.bg-red-400 {
-				background-color: var(--red-400);
-			}
-			.bg-red-500 {
-				background-color: var(--red-500);
-			}
 		</style>
 	</head>
 	<body>
-		<div>
-			<div class="content-color">
-				<div class="box-color bg-red-100"></div>
-				<div class="box-color bg-red-200"></div>
-				<div class="box-color bg-red-300"></div>
-				<div class="box-color bg-red-400"></div>
-				<div class="box-color bg-red-500"></div>
+		<main class="bg-primary color-primary">
+			<div class="hx-container-sm">
+				<section class="p-block-16 p-inline-6">
+					<h1 class="color-primary">Test color with scheme</h1>
+				</section>
+				<section class="p-block-16 p-inline-6 bg-light-primary">
+					<h1 class="color-light-primary">Test without scheme - Light</h1>
+				</section>
+				<section class="p-block-16 p-inline-6 bg-dark-primary">
+					<h1 class="color-dark-primary">Test without scheme - Dark</h1>
+				</section>
+				<section class="p-block-16 ds-flex flow-col-nw gap-xs">
+					<div class="ds-flex flow-row-nw gap-xs">
+						<div class="box-color bg-red-100"></div>
+						<div class="box-color bg-red-300"></div>
+						<div class="box-color bg-red-500"></div>
+						<div class="box-color bg-red-700"></div>
+						<div class="box-color bg-red-900"></div>
+					</div>
+					<div class="ds-flex flow-row-nw gap-xs">
+						<div class="box-color bg-orange-100"></div>
+						<div class="box-color bg-orange-300"></div>
+						<div class="box-color bg-orange-500"></div>
+						<div class="box-color bg-orange-700"></div>
+						<div class="box-color bg-orange-900"></div>
+					</div>
+					<div class="ds-flex flow-row-nw gap-xs">
+						<div class="box-color bg-yellow-100"></div>
+						<div class="box-color bg-yellow-300"></div>
+						<div class="box-color bg-yellow-500"></div>
+						<div class="box-color bg-yellow-700"></div>
+						<div class="box-color bg-yellow-900"></div>
+					</div>
+					<div class="ds-flex flow-row-nw gap-xs">
+						<div class="box-color bg-green-100"></div>
+						<div class="box-color bg-green-300"></div>
+						<div class="box-color bg-green-500"></div>
+						<div class="box-color bg-green-700"></div>
+						<div class="box-color bg-green-900"></div>
+					</div>
+					<div class="ds-flex flow-row-nw gap-xs">
+						<div class="box-color bg-blue-100"></div>
+						<div class="box-color bg-blue-300"></div>
+						<div class="box-color bg-blue-500"></div>
+						<div class="box-color bg-blue-700"></div>
+						<div class="box-color bg-blue-900"></div>
+					</div>
+					<div class="ds-flex flow-row-nw gap-xs">
+						<div class="box-color bg-purple-100"></div>
+						<div class="box-color bg-purple-300"></div>
+						<div class="box-color bg-purple-500"></div>
+						<div class="box-color bg-purple-700"></div>
+						<div class="box-color bg-purple-900"></div>
+					</div>
+				</section>
+
+				<section class="p-block-16 ds-flex flow-col-nw gap-xs">
+					<div class="ds-flex flow-row-nw gap-xs">
+						<span class="color-red-100">red</span>
+						<span class="color-red-300">red</span>
+						<span class="color-red-500">red</span>
+						<span class="color-red-700">red</span>
+						<span class="color-red-900">red</span>
+					</div>
+					<div class="ds-flex flow-row-nw gap-xs">
+						<span class="color-orange-100">orange</span>
+						<span class="color-orange-300">orange</span>
+						<span class="color-orange-500">orange</span>
+						<span class="color-orange-700">orange</span>
+						<span class="color-orange-900">orange</span>
+					</div>
+					<div class="ds-flex flow-row-nw gap-xs">
+						<span class="color-yellow-100">yellow</span>
+						<span class="color-yellow-300">yellow</span>
+						<span class="color-yellow-500">yellow</span>
+						<span class="color-yellow-700">yellow</span>
+						<span class="color-yellow-900">yellow</span>
+					</div>
+					<div class="ds-flex flow-row-nw gap-xs">
+						<span class="color-green-100">green</span>
+						<span class="color-green-300">green</span>
+						<span class="color-green-500">green</span>
+						<span class="color-green-700">green</span>
+						<span class="color-green-900">green</span>
+					</div>
+					<div class="ds-flex flow-row-nw gap-xs">
+						<span class="color-blue-100">blue</span>
+						<span class="color-blue-300">blue</span>
+						<span class="color-blue-500">blue</span>
+						<span class="color-blue-700">blue</span>
+						<span class="color-blue-900">blue</span>
+					</div>
+					<div class="ds-flex flow-row-nw gap-xs">
+						<span class="color-purple-100">purple</span>
+						<span class="color-purple-300">purple</span>
+						<span class="color-purple-500">purple</span>
+						<span class="color-purple-700">purple</span>
+						<span class="color-purple-900">purple</span>
+					</div>
+				</section>
 			</div>
-		</div>
+		</main>
 	</body>
 </html>

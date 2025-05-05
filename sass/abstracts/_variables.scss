@@ -1,6 +1,6 @@
 @use 'sass:list';
 
-/// Lista com todas as cores de background
+/// List with all background colors
 $backgrounds: (
 	'light': (
 		'base': #{0,
@@ -22,7 +22,7 @@ $backgrounds: (
 	),
 );
 
-// Lista com todas as cores de texto
+/// List with all text colors
 $texts: (
 	'light': (
 		'base': #{0,
@@ -44,7 +44,7 @@ $texts: (
 	),
 );
 
-// Lista com todas as cores
+/// List with all colors
 $colors: (
 	'red': (
 		'base': #{5,
@@ -114,7 +114,7 @@ $colors: (
 	),
 );
 
-/// Variável com nome comum para variantes de cores
+/// Variable with common names for color variants
 $human-color-variant: (
 	'100': 'light',
 	'300': 'lighten',
@@ -123,7 +123,7 @@ $human-color-variant: (
 	'900': 'dark',
 );
 
-/// Variável com todos os breakpoints
+/// Variable with all breakpoints
 $breakpoints: (
 	'2xl': 96rem,
 	'xl': 80rem,
