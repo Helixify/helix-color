@@ -10,32 +10,6 @@
 	</span>
 </div>
 
-<ul>
-	<li>✓ Variáveis base para background</li>
-	<li>✓ Variáveis base para text</li>
-	<li>✓ Variáveis base para background com color shceme</li>
-	<li>✓ Variáveis base para text com color shceme</li>
-	<li>✓ Variáveis de cores gerais</li>
-	<li>✓ Classes base para background</li>
-	<li>✓ Classes base para text</li>
-	<li>✓ Classes base para background com color shceme</li>
-	<li>✓ Classes base para text com color shceme</li>
-	<li>✓ Classes de cores gerais</li>
-	<li>✓ Classes hover base para background</li>
-	<li>✓ Classes hover base para text</li>
-	<li>✓ Classes hover base para background com color shceme</li>
-	<li>✓ Classes hover base para text com color shceme</li>
-	<li>✓ Classes hover de cores gerais</li>
-	<li>✓ Configuração para color shceme para as variáveis específicas</li>
-	<li>✓ Classes responsivas base para background</li>
-	<li>✓ Classes responsivas base para text</li>
-	<li>✓ Classes responsivas base para background com color shceme</li>
-	<li>✓ Classes responsivas base para text com color shceme</li>
-	<li>✓ Classes responsivas de cores gerais</li>
-	<li>✓ Classes auxiliares para backgrouund. ex: background transparent</li>
-	<li>✓ Classes auxiliares para texts. ex: font inherit</li>
-</ul>
-
 <br/>
 <br/>
 
