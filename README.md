@@ -1,4 +1,4 @@
-<img src='./public/doc/cover.png' title='Helix Color' alt='Logo Helix Color' />
+![Logo HelixColor](./public/doc/cover.png)
 <div align="center">
   <h3>A color library for dev</h3>
   	<span>
