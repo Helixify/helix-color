@@ -1,17 +1,14 @@
-![Logo HelixColor](./public/doc/cover.png)
+
 <div align="center">
-  <h3>A color library for dev</h3>
-  	<span>
-		<a href="#installation">Get started</a>
-		<span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
-		<a href="#static-olors">Static Colors</a>
-		<span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
-		<a href="#dynamic-colors-with-prefers-color-scheme">Dynamic Colors</a>
-	</span>
+	
+![Logo HelixColor](./public/doc/cover.png)
+
 </div>
 
 <br/>
 <br/>
+
+## About
 
 Helix Color is a CSS library that provides a color palette based on the color wheel, making it easy to create visually
 appealing and harmonious interfaces. The library includes variables and classes that apply colors through CSS
